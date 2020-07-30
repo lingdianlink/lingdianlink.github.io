@@ -20,17 +20,20 @@
     var CONFIG = {"hostname":"lingdianlink.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://lingdianlink.github.io/tags/index.html">
+  <meta name="description" content="import的用法：  import module import package from package import module  我们先说说package的结构，package下一般有一个__init__.py文件，和一些module或者是子package，而子package也类似， 1234567|__&#96;package&#96;    |__&#96;__init__.py&amp;#9">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python的import用法杂谈">
+<meta property="og:url" content="http://lingdianlink.github.io/2020/07/30/python%E7%9A%84import%E7%94%A8%E6%B3%95%E6%9D%82%E8%B0%88/index.html">
 <meta property="og:site_name" content="lingdian&#96;s blog">
+<meta property="og:description" content="import的用法：  import module import package from package import module  我们先说说package的结构，package下一般有一个__init__.py文件，和一些module或者是子package，而子package也类似， 1234567|__&#96;package&#96;    |__&#96;__init__.py&amp;#9">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-07-29T06:01:06.000Z">
-<meta property="article:modified_time" content="2020-07-29T06:02:42.633Z">
+<meta property="article:published_time" content="2020-07-29T17:13:46.000Z">
+<meta property="article:modified_time" content="2020-07-30T08:21:44.064Z">
 <meta property="article:author" content="lingdian">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://lingdianlink.github.io/tags/">
+<link rel="canonical" href="http://lingdianlink.github.io/2020/07/30/python%E7%9A%84import%E7%94%A8%E6%B3%95%E6%9D%82%E8%B0%88/">
 
 
 <script id="page-configurations">
@@ -38,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>tags | lingdian`s blog
-</title>
+  <title>python的import用法杂谈 | lingdian`s blog</title>
   
 
 
@@ -156,51 +158,105 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="zh-CN">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://lingdianlink.github.io/2020/07/30/python%E7%9A%84import%E7%94%A8%E6%B3%95%E6%9D%82%E8%B0%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="lingdian">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="lingdian`s blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python的import用法杂谈
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">tags
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2020-07-30 01:13:46 / 修改时间：16:21:44" itemprop="dateCreated datePublished" datetime="2020-07-30T01:13:46+08:00">2020-07-30</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>import的用法：</p>
+<ul>
+<li><code>import module</code></li>
+<li><code>import package</code></li>
+<li><code>from package import module</code></li>
+</ul>
+<p>我们先说说package的结构，package下一般有一个<code>__init__.py</code>文件，和一些module或者是子package，而子package也类似，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|__&#96;package&#96;</span><br><span class="line">    |__&#96;__init__.py&#96;</span><br><span class="line">    |__&#96;module1.py&#96;</span><br><span class="line">    |__&#96;module2.py&#96;</span><br><span class="line">    |__&#96;package1&#96;</span><br><span class="line">        |__&#96;__init__.py&#96;</span><br><span class="line">        |__&#96;module3.py&#96;</span><br></pre></td></tr></table></figure>
+
+<p>当对package下任意内容有导入行为时都会先导入该<code>__init__,py</code></p>
+<p>下面我们看看import的三种用法：</p>
+<ol>
+<li><p><code>import package</code>:<br> 当导入一个package会发生什么呢，你以为会把package下面的module都导入吗？其实不然，我们之前提到的那个文件<code>__init__.py</code>就派上用场了，其实这就只是导入了<code>__init__.py</code>。</p>
+</li>
+<li><p><code>import module</code>:<br> 导入module你肯定要让系统知道导入的是那个module，而能够唯一确定module的有两点，module的路径和module的名字，而系统预先就道了一些基本的路径，我们可以通过下面代码查看。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import sys</span><br><span class="line">sys.path</span><br></pre></td></tr></table></figure>
+<p> 当系统已经知道路径之后我们就只需要告诉它名字了，对于路径下module当然是这样，但当是路径下的的package里面的module，那直接package. module也一样可以导入。子包里面的也一样一路<code>.</code>去就行。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import module</span><br><span class="line">import package.module</span><br></pre></td></tr></table></figure>
+<p> 别忘了也会先导入<code>__init__.py</code>哦。</p>
+</li>
+<li><p><code>from package import module</code>:<br> 和<code>import package.module</code>效果相同但看起来代码更加清晰，就不详细说了。</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/python/" rel="tag"># python</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/29/%E7%88%AC%E8%99%AB%E5%9F%BA%E7%A1%80%E4%B9%8Bhttp%E5%8D%8F%E8%AE%AE/" rel="prev" title="爬虫基础之http协议基础">
+      <i class="fa fa-chevron-left"></i> 爬虫基础之http协议基础
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              目前共计 2 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/python/" style="font-size: 30px; color: #111">python</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 12px; color: #ccc">爬虫</a>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
